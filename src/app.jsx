@@ -1,36 +1,19 @@
-import React, { useRef } from "react";
-import Form from "./Form/Form";
-import FormItem from "./Form/FormItem";
-import Input from "./Form/Input";
-
+import React, { useState } from "react";
+import FormPage from "./pages/FormPage";
+import ContextPage from "./pages/ContextPage";
+import { myContext } from "./context/contextStore";
+const ContextPageFake = React.memo(() => <ContextPage />);
 const App = () => {
-  const form = useRef(null);
+  const [contextValue, setContextValue] = useState({ theme: "blue" });
 
-  const submit = () => {
-    /* 表单提交 */
-    form.current.submitForm((formValue) => {
-      console.log(formValue);
-    });
-  };
-  const reset = () => {
-    /* 表单重置 */
-    form.current.resetForm();
-  };
   return (
     <React.Fragment>
-      <Form ref={form}>
-        <FormItem name="username" label="姓名">
-          <Input />
-        </FormItem>
-        <FormItem name="password" label="密码">
-          <Input />
-        </FormItem>
-      </Form>
-      <div style={{ padding: "5px", marginLeft: "50px" }}>
-        <button onClick={submit} style={{ marginRight: "15px" }}>
-          提交
-        </button>
-        <button onClick={reset}>重置</button>
+      <div style={{ border: `2px solid ${contextValue.theme}`, color: contextValue.theme, padding: "10px" }}>
+        <myContext.Provider value={{ contextValue, setContextValue }}>
+          <FormPage />
+          <hr />
+          <ContextPageFake />
+        </myContext.Provider>
       </div>
     </React.Fragment>
   );
