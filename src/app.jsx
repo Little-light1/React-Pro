@@ -5,6 +5,7 @@ import { HocFun } from "./Hoc/HocFun";
 import FormPage from "./pages/FormPage";
 import ContextPage from "./pages/ContextPage";
 import HOCPage from "./pages/HOCPage";
+import HooksPage from "./pages/HooksPage";
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
 
@@ -20,6 +21,8 @@ const App = () => {
           <ContextPageFake />
           <hr style={{ borderColor: contextValue.theme }} />
           <HOCPageFake age={18} />
+          <hr style={{ borderColor: contextValue.theme }} />
+          <HooksPage />
         </myContext.Provider>
       </div>
     </React.Fragment>
