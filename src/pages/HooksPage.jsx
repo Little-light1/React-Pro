@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 const HooksPage = (props) => {
   const [num, setNum] = useState(1);
-  console.log("渲染了");
   return (
     <React.Fragment>
       <h1>我是HooksPage</h1>

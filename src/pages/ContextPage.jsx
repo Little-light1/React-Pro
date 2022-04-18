@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { myContext } from "../context/contextStore";
 
 const ContextPage = (props) => {
-  console.log("funhocprops: ", props);
   const { contextValue, setContextValue } = useContext(myContext);
   return (
     <React.Fragment>

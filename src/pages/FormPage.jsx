@@ -26,7 +26,7 @@ const FormPage = (props) => {
         </FormItem>
       </Form>
       <div style={{ padding: "5px", marginLeft: "50px" }}>
-        <button onClick={submit} style={{ marginRight: "15px" }}>
+        <button    onClick={submit} style={{ marginRight: "15px" }}>
           提交
         </button>
         <button onClick={reset}>重置</button>
