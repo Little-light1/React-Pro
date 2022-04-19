@@ -7,6 +7,7 @@ import ContextPage from "./pages/ContextPage";
 import HOCPage from "./pages/HOCPage";
 import HooksPage from "./pages/HooksPage";
 import MemoPage from "./pages/MemoPage";
+import { useNavigate } from "react-router-dom";
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
 
@@ -25,6 +26,7 @@ const MemoPageFake = React.memo(MemoPage, propsChange);
 const App = () => {
   const [contextValue, setContextValue] = useState({ theme: "blue" });
   const [number, setNumber] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <React.Fragment>
@@ -47,6 +49,14 @@ const App = () => {
             改变number
           </button>
           <MemoPageFake number={number} />
+          <hr style={{ borderColor: contextValue.theme }} />
+          <button
+            onClick={() => {
+              navigate("/mainb");
+            }}
+          >
+            切换路由
+          </button>
         </myContext.Provider>
       </div>
     </React.Fragment>
