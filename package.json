@@ -35,5 +35,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "react-redux": "^8.0.0",
+    "redux": "^4.2.0",
+    "redux-thunk": "^2.4.1"
+  }
 }
