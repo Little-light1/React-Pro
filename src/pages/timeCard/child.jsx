@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 
 const Child = ({ position }) => {
-  const style = React.useMemo(() => {
+  const style = useMemo(() => {
     //用useMemo缓存，计算出来的随机位置和色值。
     return {
       background: getColor(),

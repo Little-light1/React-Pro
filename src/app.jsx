@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { myContext } from "./context/contextStore";
 import { HOC } from "./Hoc/Hoc";
 import { HocFun } from "./Hoc/HocFun";
@@ -8,13 +8,13 @@ import HOCPage from "./pages/HOCPage";
 import HooksPage from "./pages/HooksPage";
 import MemoPage from "./pages/MemoPage";
 import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { changeNum, getData } from "./redux/action";
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
 
 const propsChange = (pre, next) => {
   //上一个props和下一个props
-  console.log("next: ", next);
-  console.log("pre: ", pre);
   if (pre.number !== next.number && next.number < 5) {
     return false; //渲染
   } else {
@@ -23,10 +23,15 @@ const propsChange = (pre, next) => {
 };
 const MemoPageFake = React.memo(MemoPage, propsChange);
 
-const App = () => {
+const App = (props) => {
+  console.log("props: ", props);
+
   const [contextValue, setContextValue] = useState({ theme: "blue" });
   const [number, setNumber] = useState(0);
   const navigate = useNavigate();
+  useEffect(() => {
+    props.getData();
+  }, []);
 
   return (
     <React.Fragment>
@@ -63,4 +68,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default connect((state) => ({ ...state }), { changeNum, getData })(App);
