@@ -10,6 +10,7 @@ import MemoPage from "./pages/MemoPage";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { changeNum, getData } from "./redux/action";
+
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
 
@@ -24,8 +25,6 @@ const propsChange = (pre, next) => {
 const MemoPageFake = React.memo(MemoPage, propsChange);
 
 const App = (props) => {
-  console.log("props: ", props);
-
   const [contextValue, setContextValue] = useState({ theme: "blue" });
   const [number, setNumber] = useState(0);
   const navigate = useNavigate();
@@ -43,7 +42,12 @@ const App = (props) => {
           <hr style={{ borderColor: contextValue.theme }} />
           <HOCPageFake age={18} />
           <hr style={{ borderColor: contextValue.theme }} />
-          <HooksPage />
+          <HooksPage
+            changeState={() => {
+              console.log(number);
+              setNumber((prev) => prev + 1);
+            }}
+          />
           <hr style={{ borderColor: contextValue.theme }} />
           <h2>{number}</h2>
           <button

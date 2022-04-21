@@ -2,6 +2,16 @@ import React, { useState } from "react";
 
 const HooksPage = (props) => {
   const [num, setNum] = useState(1);
+
+  const [changeUseState, setChangeUseState] = useState(
+    <div
+      onClick={() => {
+        props.changeState();
+      }}
+    >
+      改变
+    </div>
+  );
   return (
     <React.Fragment>
       <h1>我是HooksPage</h1>
@@ -17,10 +27,12 @@ const HooksPage = (props) => {
             // setNum(num + 1);
             // setNum(num + 2);
             // setNum(num + 3); //4
+            props.changeState();
           }}
         >
           改变
         </button>
+        {changeUseState}
       </div>
     </React.Fragment>
   );
