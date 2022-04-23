@@ -38,7 +38,6 @@ export class Index extends Component {
     this.setState({
       renderArr,
     });
-
     requestIdleCallback(() => {
       /* 用 requestIdleCallback 代替 setTimeout 浏览器空闲执行下一批渲染 */
       this.renderList(++index, times);
