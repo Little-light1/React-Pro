@@ -19,14 +19,15 @@ const FormPage = (props) => {
     <React.Fragment>
       <Form ref={form}>
         <FormItem name="username" label="姓名">
-          <Input />
+          <Input placeholder="请输入姓名" />
         </FormItem>
         <FormItem name="password" label="密码">
-          <Input />
+          <Input type="password" placeholder="请输入密码" />
         </FormItem>
       </Form>
+
       <div style={{ padding: "5px", marginLeft: "50px" }}>
-        <button    onClick={submit} style={{ marginRight: "15px" }}>
+        <button onClick={submit} style={{ marginRight: "15px" }}>
           提交
         </button>
         <button onClick={reset}>重置</button>
