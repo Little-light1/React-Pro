@@ -64,7 +64,14 @@ const App = (props) => {
               navigate("/mainb");
             }}
           >
-            切换路由
+            Bpp
+          </button>
+          <button
+            onClick={() => {
+              navigate("/mainc");
+            }}
+          >
+            Cpp
           </button>
         </myContext.Provider>
       </div>

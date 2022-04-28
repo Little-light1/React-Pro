@@ -14,7 +14,7 @@ export class Index extends Component {
 
   componentDidMount() {
     const { offsetHeight, offsetWidth } = this.box.current;
-    const arr = new Array(20000).fill(1);
+    const arr = new Array(10000).fill(1);
     const times = arr.length / 500;
     let index = 1;
     this.setState(
@@ -58,7 +58,6 @@ export class Index extends Component {
 
   render() {
     const { renderArr } = this.state;
-    console.log("renderArr: ", renderArr);
     return (
       <div ref={this.box} style={{ height: "97.5vh", width: "100%" }}>
         {renderArr}
