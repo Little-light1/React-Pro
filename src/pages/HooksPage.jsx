@@ -4,13 +4,13 @@ const HooksPage = (props) => {
   const [num, setNum] = useState(1);
 
   const [changeUseState, setChangeUseState] = useState(
-    <div
+    <button
       onClick={() => {
         props.changeState();
       }}
     >
-      改变
-    </div>
+      usestate内部改变
+    </button>
   );
   return (
     <React.Fragment>

@@ -8,8 +8,6 @@ import HOCPage from "./pages/HOCPage";
 import HooksPage from "./pages/HooksPage";
 import MemoPage from "./pages/MemoPage";
 import { useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { changeNum, getData } from "./redux/action";
 
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
@@ -28,9 +26,6 @@ const App = (props) => {
   const [contextValue, setContextValue] = useState({ theme: "blue" });
   const [number, setNumber] = useState(0);
   const navigate = useNavigate();
-  useEffect(() => {
-    props.getData();
-  }, []);
 
   return (
     <React.Fragment>
@@ -44,8 +39,9 @@ const App = (props) => {
           <hr style={{ borderColor: contextValue.theme }} />
           <HooksPage
             changeState={() => {
-              console.log(number);
-              setNumber((prev) => prev + 1);
+              console.log("number: ", number); //一直是0
+              setNumber(number + 1); //一直是1
+              // 可以改写成  setNumber(prev=>prev+1)
             }}
           />
           <hr style={{ borderColor: contextValue.theme }} />
@@ -79,4 +75,4 @@ const App = (props) => {
   );
 };
 
-export default connect((state) => ({ ...state }), { changeNum, getData })(App);
+export default App;

@@ -1,6 +1,6 @@
-import axios from "axios";
 const ADD_NUM = "add_num";
 const SET_DATA = "set_data";
+const UPDATE_DATA = "update_data";
 
 export const changeNum = (payload) => {
   return {
@@ -11,6 +11,12 @@ export const changeNum = (payload) => {
 export const setData = (payload) => {
   return {
     type: SET_DATA,
+    payload,
+  };
+};
+export const updateData = (payload) => {
+  return {
+    type: UPDATE_DATA,
     payload,
   };
 };
