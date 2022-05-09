@@ -1,3 +1,11 @@
+/*
+ * @Author: shimmer
+ * @Date: 2022-04-23 08:29:50
+ * @LastEditors: shimmer
+ * @LastEditTime: 2022-05-09 17:17:15
+ * @Description:
+ *
+ */
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from "react";
 
 const Form = forwardRef((props, ref) => {
@@ -8,20 +16,31 @@ const Form = forwardRef((props, ref) => {
   }, [props.children]);
 
   useImperativeHandle(ref, () => {
-    return { submitForm, resetForm };
+    return { submitForm, resetForm, getFieldsValue, setFieldValue };
   });
+  // 表单提交;
   const submitForm = (data) => {
     data({ ...formData });
-    // 表单提交;
   };
-
+  // 获取表单数据
+  const getFieldsValue = () => {
+    return { ...formData };
+  };
+  // 表单重置
   const resetForm = () => {
-    // 表单重置
     Object.keys(formData).forEach((item) => {
       formData[item] = "";
     });
     setFormData({ ...formData });
   };
+
+  const setFieldValue = (obj) => {
+    Object.keys(obj).forEach((item) => {
+      formData[item] = obj[item];
+    });
+    setFormData({ ...formData });
+  };
+
   const setValue = (name, val) => {
     setFormData((prv) => {
       return {

@@ -1,16 +1,18 @@
 import React from "react";
-import { connect } from "react-redux";
 import { changeNum } from "../../redux/action";
+import { useSelector, useDispatch } from "react-redux";
 
 const BPage = (props) => {
   console.log("B渲染了");
+  const num = useSelector((state) => state.num);
+  const dispacth = useDispatch();
   return (
     <React.Fragment>
       <h1>我是PageB</h1>
-      <h1>{props.num}</h1>
+      <h3>redux.num:{num}</h3>
       <button
         onClick={() => {
-          props.changeNum();
+          dispacth(changeNum());
         }}
       >
         改变num
@@ -19,4 +21,4 @@ const BPage = (props) => {
   );
 };
 
-export default connect((state) => ({ num: state.num }), { changeNum })(BPage);
+export default BPage;

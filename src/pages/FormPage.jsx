@@ -1,3 +1,11 @@
+/*
+ * @Author: shimmer
+ * @Date: 2022-04-28 09:46:03
+ * @LastEditors: shimmer
+ * @LastEditTime: 2022-05-09 17:14:20
+ * @Description:
+ *
+ */
 import React, { useRef } from "react";
 import Form from "../Form/Form";
 import FormItem from "../Form/FormItem";
@@ -30,7 +38,25 @@ const FormPage = (props) => {
         <button onClick={submit} style={{ marginRight: "15px" }}>
           提交
         </button>
-        <button onClick={reset}>重置</button>
+        <button onClick={reset} style={{ marginRight: "15px" }}>
+          重置
+        </button>
+        <button
+          style={{ marginRight: "15px" }}
+          onClick={() => {
+            const data = form.current.getFieldsValue();
+            console.log("data: ", data);
+          }}
+        >
+          获取表单值
+        </button>
+        <button
+          onClick={() => {
+            form.current.setFieldValue({ username: "shimmer", password: "123456" });
+          }}
+        >
+          设置表单值
+        </button>
       </div>
     </React.Fragment>
   );
