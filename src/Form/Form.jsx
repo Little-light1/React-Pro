@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: shimmer
- * @LastEditTime: 2022-05-09 17:17:15
+ * @LastEditTime: 2022-05-10 08:40:14
  * @Description:
  *
  */
@@ -42,9 +42,9 @@ const Form = forwardRef((props, ref) => {
   };
 
   const setValue = (name, val) => {
-    setFormData((prv) => {
+    setFormData((prev) => {
       return {
-        ...prv,
+        ...prev,
         [name]: val,
       };
     });

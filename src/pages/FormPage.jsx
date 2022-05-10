@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-28 09:46:03
  * @LastEditors: shimmer
- * @LastEditTime: 2022-05-09 17:14:20
+ * @LastEditTime: 2022-05-10 09:24:12
  * @Description:
  *
  */
@@ -10,6 +10,7 @@ import React, { useRef } from "react";
 import Form from "../Form/Form";
 import FormItem from "../Form/FormItem";
 import Input from "../Form/Input";
+import Select from "../Form/Select";
 
 const FormPage = (props) => {
   const form = useRef(null);
@@ -32,6 +33,14 @@ const FormPage = (props) => {
         <FormItem name="password" label="密码">
           <Input type="password" placeholder="请输入密码" />
         </FormItem>
+
+        <FormItem name="person" label="选择人物">
+          <Select placeholder="请选择">
+            <Select.Option value="1">小A</Select.Option>
+            <Select.Option value="2">小B</Select.Option>
+            <Select.Option value="3">小C</Select.Option>
+          </Select>
+        </FormItem>
       </Form>
 
       <div style={{ padding: "5px", marginLeft: "50px" }}>
@@ -52,7 +61,7 @@ const FormPage = (props) => {
         </button>
         <button
           onClick={() => {
-            form.current.setFieldValue({ username: "shimmer", password: "123456" });
+            form.current.setFieldValue({ username: "shimmer", password: "123456", person: "3" });
           }}
         >
           设置表单值
