@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-28 09:46:03
  * @LastEditors: shimmer
- * @LastEditTime: 2022-05-10 09:24:12
+ * @LastEditTime: 2022-05-10 10:33:00
  * @Description:
  *
  */
@@ -36,9 +36,15 @@ const FormPage = (props) => {
 
         <FormItem name="person" label="选择人物">
           <Select placeholder="请选择">
-            <Select.Option value="1">小A</Select.Option>
-            <Select.Option value="2">小B</Select.Option>
-            <Select.Option value="3">小C</Select.Option>
+            <Select.Option value="1" key="1">
+              小A
+            </Select.Option>
+            <Select.Option value="2" key="2">
+              小B
+            </Select.Option>
+            <Select.Option value="3" key="3">
+              小C
+            </Select.Option>
           </Select>
         </FormItem>
       </Form>
