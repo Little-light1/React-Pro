@@ -1,8 +1,8 @@
 /*
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
- * @LastEditors: shimmer
- * @LastEditTime: 2022-05-10 10:13:55
+ * @LastEditors: zhangzhen
+ * @LastEditTime: 2022-09-15 10:45:14
  * @Description:
  *
  */
@@ -12,6 +12,7 @@ import App from './app';
 import Bpp from './bpp';
 import Cpp from './cpp';
 import Dpp from './dpp';
+import Epp from './epp';
 
 const routesProps = {data: '我是路由的参数'};
 
@@ -23,6 +24,7 @@ const BasicRouter = () => {
                 <Route path="/mainb" element={<Bpp />} />
                 <Route path="/mainc" element={<Cpp />} />
                 <Route path="/maind" element={<Dpp />} />
+                <Route path="/maine" element={<Epp />} />
                 <Route path="/" element={<Navigate to="/main" />} />
             </Routes>
         </BrowserRouter>

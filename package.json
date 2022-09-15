@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "ahooks": "^3.7.1",
     "antd": "^4.22.8",
     "axios": "^0.26.1",
     "loadsh": "^0.0.4",

@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-01 13:58:59
+ * @LastEditTime: 2022-09-15 10:45:34
  * @Description:
  *
  */
@@ -95,6 +95,12 @@ const App = (props) => {
                             navigate('/maind');
                         }}>
                         Dpp
+                    </button>
+                    <button
+                        onClick={() => {
+                            navigate('/maine');
+                        }}>
+                        Epp
                     </button>
                 </myContext.Provider>
             </div>
