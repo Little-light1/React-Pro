@@ -6,25 +6,27 @@
  * @Description:
  *
  */
-import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import App from "./app";
-import Bpp from "./bpp";
-import Cpp from "./cpp";
+import React from 'react';
+import {BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
+import App from './app';
+import Bpp from './bpp';
+import Cpp from './cpp';
+import Dpp from './dpp';
 
-const routesProps = { data: "我是路由的参数" };
+const routesProps = {data: '我是路由的参数'};
 
 const BasicRouter = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/main" element={<App {...routesProps} />} />
-        <Route path="/mainb" element={<Bpp />} />
-        <Route path="/mainc" element={<Cpp />} />
-        <Route path="/" element={<Navigate to="/main" />} />
-      </Routes>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/main" element={<App {...routesProps} />} />
+                <Route path="/mainb" element={<Bpp />} />
+                <Route path="/mainc" element={<Cpp />} />
+                <Route path="/maind" element={<Dpp />} />
+                <Route path="/" element={<Navigate to="/main" />} />
+            </Routes>
+        </BrowserRouter>
+    );
 };
 
 export default BasicRouter;
