@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:45:53
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-17 10:51:25
+ * @LastEditTime: 2022-09-17 23:11:56
  *
  */
 import React, {useState, useEffect} from 'react';
@@ -12,10 +12,18 @@ import {isItemCanClick} from './action';
 
 let hasThreeItem = 0;
 const GameBox = () => {
+    // 分数
     const [score, setScore] = useState(0);
+    // 第几关
     const [level, setLevel] = useState(1);
+    // 游戏的item
     const [gameItemsArr, setGameItemsArr] = useState(itemsArr(level));
+    // 操作的数组
     const [operateArr, setOperateArr] = useState([null, null, null, null, null, null, null]);
+    // 当前点击的item，撤回用
+    const [nowClickItemInfo, setNowClickItemInfo] = useState([null, null, null]);
+    // 操作次数
+    const [isOperate, setIsOperate] = useState([0, 0, 0]);
 
     useEffect(() => {
         if (operateArr.filter((item) => item).length === 7) {
@@ -43,6 +51,10 @@ const GameBox = () => {
     const moveItem = (item, index, whichFloor) => {
         hasThreeItem = 0;
         let hasThreeindex = 0;
+        // 记录当前的点击item信息
+        const nowClickItem = [item, index, whichFloor];
+        setNowClickItemInfo(nowClickItem);
+
         // 放到操作区
         setOperateArr((prev) => {
             const currentIndex = prev.findIndex((k) => k && k.name === item.name);
@@ -151,15 +163,42 @@ const GameBox = () => {
             <div className="operateBtnArr">
                 <span
                     className="operateBtn"
+                    style={isOperate[0] === 1 ? {background: 'grey'} : {}}
                     onClick={() => {
+                        if (isOperate[0] === 1) return;
                         setGameItemsArr((prev) => {
                             prev = itemsArr(level);
+                            return [...prev];
+                        });
+                        setIsOperate((prev) => {
+                            prev[0] = 1;
                             return [...prev];
                         });
                     }}>
                     随机
                 </span>
-                <span className="operateBtn">撤回</span>
+                <span
+                    className="operateBtn"
+                    style={isOperate[1] === 1 ? {background: 'grey'} : {}}
+                    onClick={() => {
+                        if (isOperate[1] === 1) return;
+                        setOperateArr((prev) => {
+                            const lastIndex = prev.findIndex((item) => item && item.name === nowClickItemInfo[0].name);
+                            prev.splice(lastIndex, 1);
+                            return [...prev];
+                        });
+                        setGameItemsArr((prev) => {
+                            prev[nowClickItemInfo[2]].arr[nowClickItemInfo[1]] = nowClickItemInfo[0];
+                            return [...prev];
+                        });
+
+                        setIsOperate((prev) => {
+                            prev[1] = 1;
+                            return [...prev];
+                        });
+                    }}>
+                    撤回
+                </span>
                 <span className="operateBtn">加三个格子</span>
             </div>
         </div>
