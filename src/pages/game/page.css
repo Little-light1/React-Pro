@@ -1,74 +1,107 @@
 .gamebox {
-    width: 500px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     padding: 20px;
     border: 2px solid black;
     border-radius: 20px;
 }
 
-.titleAreaTitle{
-   font-size: 30px;
-   text-shadow: 1px 1px 1px rgb(78, 75, 75)
+.titleAreaTitle {
+    font-size: 30px;
+    text-shadow: 1px 1px 1px rgb(78, 75, 75)
 }
 
-.titleAreaScore{
+.titleAreaScore {
     font-size: 25px;
-   
+
 }
-.titleArea{
+
+.titleArea {
     width: 100%;
-    height: 23%;
+    height: 15%;
     background-color: #eff777;
     border-radius: 10px;
     margin-bottom: 2%;
     text-align: center;
 }
+
 .gameArea {
-    width: 100%;
-    background-color: #fff;
+    position: relative;
+    height: 70%;
     border: 2px solid black;
     border-radius: 9px;
-    margin-bottom: 2%;
-    padding: 10px 10px 10px 10px;
-    grid-template-areas: 'myArea myArea myArea myArea myArea myArea myArea myArea';
-    grid-gap: 5px;
-    display: grid;
 
 }
 
-.operateArea{
+.gameAreaFloor {
+    pointer-events: none;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.operateArea {
     width: 100%;
-    height: 80px;
+    height: 7%;
     border: 2px solid black;
     border-radius: 5px;
-    padding: 10px 10px 0px 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+
 
 }
 
 .gameItem {
+    pointer-events: auto;
     border-radius: 8px;
-    width: 50px;
-    height:50px;
+    width: 30px;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
-    line-height: 50px;
-    box-shadow: 2px 2px 4px #aaaaaa;
-    border: 1px solid #000;
+    font-size: 15px;
+    line-height: 30px;
+    box-shadow: 2px 2px 4px #000;
+    border: 1px solid #c2cbcbee;
     cursor: pointer;
+    margin: 0px 5px 5px 0;
+
 }
 
 .gameItemOperate {
     border-radius: 8px;
-    width: 50px;
-    height: 50px;
+    width: 10%;
+    height: 30px;
     text-align: center;
-    font-size: 25px;
-    line-height: 50px;
+    font-size: 15px;
+    line-height: 30px;
     box-shadow: 2px 2px 4px #aaaaaa;
     border: 1px solid #000;
     cursor: pointer;
     margin-right: 10px;
 }
 
+.operateBtnArr {
+    height: 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.operateBtn {
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    line-height: 30px;
+    background-color: #f08300;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px #aaaaaa;
+
+}
