@@ -2,50 +2,50 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:46:02
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-17 10:21:02
+ * @LastEditTime: 2022-09-19 13:24:51
  *
  */
 const gameItemsArr = [
-    {name: '马', color: '#5470c6', position: [null, null, null], display: false},
-    {name: '马', color: '#5470c6', position: [null, null, null], display: false},
-    {name: '马', color: '#5470c6', position: [null, null, null], display: false},
-    {name: '驰', color: '#fac858', position: [null, null, null], display: false},
-    {name: '驰', color: '#fac858', position: [null, null, null], display: false},
-    {name: '驰', color: '#fac858', position: [null, null, null], display: false},
-    {name: '朱', color: '#ee6666', position: [null, null, null], display: false},
-    {name: '朱', color: '#ee6666', position: [null, null, null], display: false},
-    {name: '朱', color: '#ee6666', position: [null, null, null], display: false},
-    {name: '振', color: '#73c0de', position: [null, null, null], display: false},
-    {name: '振', color: '#73c0de', position: [null, null, null], display: false},
-    {name: '振', color: '#73c0de', position: [null, null, null], display: false},
-    {name: '骚', color: '#3bd272', position: [null, null, null], display: false},
-    {name: '骚', color: '#3bd272', position: [null, null, null], display: false},
-    {name: '骚', color: '#3bd272', position: [null, null, null], display: false},
-    {name: '刘', color: '#9a60b4', position: [null, null, null], display: false},
-    {name: '刘', color: '#9a60b4', position: [null, null, null], display: false},
-    {name: '刘', color: '#9a60b4', position: [null, null, null], display: false},
-    {name: '胖', color: '#ea7ccc', position: [null, null, null], display: false},
-    {name: '胖', color: '#ea7ccc', position: [null, null, null], display: false},
-    {name: '胖', color: '#ea7ccc', position: [null, null, null], display: false},
-    {name: '邢', color: '#c14cac', position: [null, null, null], display: false},
-    {name: '邢', color: '#c14cac', position: [null, null, null], display: false},
-    {name: '邢', color: '#c14cac', position: [null, null, null], display: false},
-    {name: '吊', color: '#f08300', position: [null, null, null], display: false},
-    {name: '吊', color: '#f08300', position: [null, null, null], display: false},
-    {name: '吊', color: '#f08300', position: [null, null, null], display: false},
-    {name: '龙', color: '#004eff', position: [null, null, null], display: false},
-    {name: '龙', color: '#004eff', position: [null, null, null], display: false},
-    {name: '龙', color: '#004eff', position: [null, null, null], display: false},
-    {name: '楞', color: '#00e4ff', position: [null, null, null], display: false},
-    {name: '楞', color: '#00e4ff', position: [null, null, null], display: false},
-    {name: '楞', color: '#00e4ff', position: [null, null, null], display: false},
-    {name: '张', color: '#c0e8ff', position: [null, null, null], display: false},
-    {name: '张', color: '#c0e8ff', position: [null, null, null], display: false},
-    {name: '张', color: '#c0e8ff', position: [null, null, null], display: false},
+    {name: '马', color: '#5470c6', position: [null, null, null]},
+    {name: '马', color: '#5470c6', position: [null, null, null]},
+    {name: '马', color: '#5470c6', position: [null, null, null]},
+    {name: '驰', color: '#fac858', position: [null, null, null]},
+    {name: '驰', color: '#fac858', position: [null, null, null]},
+    {name: '驰', color: '#fac858', position: [null, null, null]},
+    {name: '朱', color: '#ee6666', position: [null, null, null]},
+    {name: '朱', color: '#ee6666', position: [null, null, null]},
+    {name: '朱', color: '#ee6666', position: [null, null, null]},
+    {name: '振', color: '#73c0de', position: [null, null, null]},
+    {name: '振', color: '#73c0de', position: [null, null, null]},
+    {name: '振', color: '#73c0de', position: [null, null, null]},
+    {name: '骚', color: '#3bd272', position: [null, null, null]},
+    {name: '骚', color: '#3bd272', position: [null, null, null]},
+    {name: '骚', color: '#3bd272', position: [null, null, null]},
+    {name: '刘', color: '#9a60b4', position: [null, null, null]},
+    {name: '刘', color: '#9a60b4', position: [null, null, null]},
+    {name: '刘', color: '#9a60b4', position: [null, null, null]},
+    {name: '胖', color: '#ea7ccc', position: [null, null, null]},
+    {name: '胖', color: '#ea7ccc', position: [null, null, null]},
+    {name: '胖', color: '#ea7ccc', position: [null, null, null]},
+    {name: '邢', color: '#c14cac', position: [null, null, null]},
+    {name: '邢', color: '#c14cac', position: [null, null, null]},
+    {name: '邢', color: '#c14cac', position: [null, null, null]},
+    {name: '吊', color: '#f08300', position: [null, null, null]},
+    {name: '吊', color: '#f08300', position: [null, null, null]},
+    {name: '吊', color: '#f08300', position: [null, null, null]},
+    {name: '龙', color: '#004eff', position: [null, null, null]},
+    {name: '龙', color: '#004eff', position: [null, null, null]},
+    {name: '龙', color: '#004eff', position: [null, null, null]},
+    {name: '楞', color: '#00e4ff', position: [null, null, null]},
+    {name: '楞', color: '#00e4ff', position: [null, null, null]},
+    {name: '楞', color: '#00e4ff', position: [null, null, null]},
+    {name: '张', color: '#c0e8ff', position: [null, null, null]},
+    {name: '张', color: '#c0e8ff', position: [null, null, null]},
+    {name: '张', color: '#c0e8ff', position: [null, null, null]},
 ];
 
 // 生成游戏items
-export const itemsArr = (level) => {
+export const itemsArr = (level = 1) => {
     let arr = [...gameItemsArr];
     // 每层有多少item
     const floorItemsArr = [9, 16, 25, 36, 49, 64, 81];

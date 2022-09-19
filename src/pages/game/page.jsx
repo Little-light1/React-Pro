@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:45:53
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-17 23:11:56
+ * @LastEditTime: 2022-09-19 17:01:03
  *
  */
 import React, {useState, useEffect} from 'react';
@@ -38,6 +38,11 @@ const GameBox = () => {
             alert(`恭喜你通过第${level}关了！！！`);
             if (level === 6) {
                 alert('恭喜你通关了！！！');
+                setLevel(1);
+                setGameItemsArr((prev) => {
+                    prev = itemsArr(1);
+                    return [...prev];
+                });
                 return;
             }
             setLevel((prev) => prev + 1);
@@ -104,8 +109,11 @@ const GameBox = () => {
             <div className="titleArea">
                 <div className="titleAreaTitle">汉字方块</div>
                 <div className="titleAreaScore">
-                    <span>分数:</span>
-                    <span>{score}</span>
+                    <div>第{level}关</div>
+                    <div>
+                        <span>分数:</span>
+                        <span>{score}</span>
+                    </div>
                 </div>
             </div>
             {/* 游戏区域 */}
@@ -153,7 +161,10 @@ const GameBox = () => {
                         return <div key={index} className="gameItemOperate"></div>;
                     } else {
                         return (
-                            <div key={index} style={{background: item.color}} className="gameItemOperate">
+                            <div
+                                key={index}
+                                style={isOperate[2] === 1 ? {background: item.color, width: '8%'} : {background: item.color}}
+                                className="gameItemOperate">
                                 {item.name}
                             </div>
                         );
@@ -181,10 +192,14 @@ const GameBox = () => {
                     className="operateBtn"
                     style={isOperate[1] === 1 ? {background: 'grey'} : {}}
                     onClick={() => {
+                        if (operateArr.filter((item) => item).length === 0) return;
                         if (isOperate[1] === 1) return;
                         setOperateArr((prev) => {
                             const lastIndex = prev.findIndex((item) => item && item.name === nowClickItemInfo[0].name);
-                            prev.splice(lastIndex, 1);
+                            prev.splice(lastIndex, 1, null);
+                            const noIndex = prev.findIndex((item) => !item);
+                            prev.splice(noIndex, 1);
+                            prev.push(null);
                             return [...prev];
                         });
                         setGameItemsArr((prev) => {
@@ -199,7 +214,22 @@ const GameBox = () => {
                     }}>
                     撤回
                 </span>
-                <span className="operateBtn">加三个格子</span>
+                <span
+                    className="operateBtn"
+                    style={isOperate[2] === 1 ? {background: 'grey'} : {}}
+                    onClick={() => {
+                        if (operateArr.length === 0) return;
+                        setOperateArr((prev) => {
+                            prev.push(null);
+                            return [...prev];
+                        });
+                        setIsOperate((prev) => {
+                            prev[2] = 1;
+                            return [...prev];
+                        });
+                    }}>
+                    格子+1
+                </span>
             </div>
         </div>
     );
