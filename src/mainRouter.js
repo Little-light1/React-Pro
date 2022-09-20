@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-19 13:34:24
+ * @LastEditTime: 2022-09-20 13:05:44
  * @Description:
  *
  */
@@ -25,7 +25,7 @@ const BasicRouter = () => {
                 <Route path="/mainc" element={<Cpp />} />
                 <Route path="/maind" element={<Dpp />} />
                 <Route path="/maine" element={<Epp />} />
-                <Route path="/" element={<Navigate to="/maine" />} />
+                <Route path="/" element={<Navigate to="/main" />} />
             </Routes>
         </HashRouter>
     );

@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-06-29 10:09:57
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-06-29 10:48:38
+ * @LastEditTime: 2022-09-20 13:38:16
  * @Description:
  *
  */
@@ -19,11 +19,13 @@ class ModalClass extends Component {
 
     //  创建头部
     createHeader = () => {
-        const {title, onClose} = this.props;
+        const {title, onCancel} = this.props;
         return (
             <div className="modal-header">
-                <span>{title}</span>
-                <span onClick={onClose}>×</span>
+                <span className="modal-header-title">{title}</span>
+                <span className="modal-header-close" onClick={onCancel}>
+                    ×
+                </span>
             </div>
         );
     };
@@ -51,9 +53,9 @@ class ModalClass extends Component {
     };
 
     render() {
-        const {visible, width = 500, closeCb, onClose} = this.props;
+        const {visible, width = 500, height = 500, closeCb, onClose} = this.props;
         return (
-            <ModalComponent visible={visible} width={width} onClose={onClose} closeCb={closeCb}>
+            <ModalComponent visible={visible} width={width} height={height} onClose={onClose} closeCb={closeCb}>
                 {this.createHeader()}
                 {this.createMain()}
                 {this.createFooter()}

@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-15 10:45:34
+ * @LastEditTime: 2022-09-20 14:06:25
  * @Description:
  *
  */
@@ -18,6 +18,7 @@ import MemoPage from './pages/MemoPage';
 import {useNavigate} from 'react-router-dom';
 import Modal from './Modal/modal';
 import {useDebounce} from './hooks/useDebounce';
+import Epp from './epp';
 
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
@@ -72,10 +73,15 @@ const App = (props) => {
                     <hr style={{borderColor: contextValue.theme}} />
                     <button
                         onClick={() => {
-                            // setVisible(true);
-                            debounceFun();
+                            setVisible(true);
                         }}>
                         打开modal
+                    </button>
+                    <button
+                        onClick={() => {
+                            setVisible(false);
+                        }}>
+                        关闭modal
                     </button>
                     <hr style={{borderColor: contextValue.theme}} />
                     <button
@@ -105,8 +111,18 @@ const App = (props) => {
                 </myContext.Provider>
             </div>
 
-            <Modal visible={visible} title={'弹窗'}>
-                111222
+            <Modal
+                visible={visible}
+                title={'弹窗'}
+                width={500}
+                height={880}
+                onCancel={() => {
+                    setVisible(false);
+                }}
+                onOk={() => {
+                    setVisible(true);
+                }}>
+                <Epp />
             </Modal>
         </React.Fragment>
     );
