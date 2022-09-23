@@ -2,22 +2,22 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 09:11:01
+ * @LastEditTime: 2022-09-23 09:14:26
  * @Description:
  *
  */
 import React, {useEffect, useState} from 'react';
-import {myContext} from './context/contextStore';
-import {HOC} from './Hoc/Hoc';
-import {HocFun} from './Hoc/HocFun';
-import FormPage from './pages/FormPage';
-import ContextPage from './pages/ContextPage';
-import HOCPage from './pages/HOCPage';
-import HooksPage from './pages/HooksPage';
-import MemoPage from './pages/MemoPage';
+import {myContext} from '../context/contextStore';
+import {HOC} from '../Hoc/Hoc';
+import {HocFun} from '../Hoc/HocFun';
+import FormPage from './FormPage';
+import ContextPage from './ContextPage';
+import HOCPage from './HOCPage';
+import HooksPage from './HooksPage';
+import MemoPage from './MemoPage';
 import {useNavigate} from 'react-router-dom';
-import Modal from './Modal/modal';
-import {useDebounce} from './hooks/useDebounce';
+import Modal from '../Modal/modal';
+import {useDebounce} from '../hooks/useDebounce';
 import Epp from './epp';
 
 const ContextPageFake = HocFun(ContextPage);

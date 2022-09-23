@@ -12,9 +12,9 @@ import React, {useEffect, useState} from 'react';
 // import CPage from "./pages/reduxPage/CPage";
 import {useNavigate} from 'react-router-dom';
 
-const APage = React.lazy(() => import('./pages/reduxPage/APage'));
-const BPage = React.lazy(() => import('./pages/reduxPage/BPage'));
-const CPage = React.lazy(() => import('./pages/reduxPage/CPage'));
+const APage = React.lazy(() => import('./reduxPage/APage'));
+const BPage = React.lazy(() => import('./reduxPage/BPage'));
+const CPage = React.lazy(() => import('./reduxPage/CPage'));
 
 const Cpp = (props) => {
     const navigate = useNavigate();

@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:41:23
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 09:09:53
+ * @LastEditTime: 2022-09-23 11:04:58
  * @Description:
  *
  */
@@ -14,8 +14,8 @@ import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css';
 import propertiesPanelModule from 'bpmn-js-properties-panel';
 import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
 import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda';
-import {xmlStr} from './xml';
-import './dpp.css';
+import {xmlStr} from '../xml';
+import './page.css';
 
 const Dpp = (props) => {
     const navigate = useNavigate();

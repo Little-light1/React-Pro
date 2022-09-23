@@ -2,17 +2,18 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 09:09:08
+ * @LastEditTime: 2022-09-23 09:15:35
  * @Description:
  *
  */
 import React from 'react';
 import {Route, Routes, Navigate, HashRouter} from 'react-router-dom';
-import App from './app';
-import Bpp from './bpp';
-import Cpp from './cpp';
-import Dpp from './dpp';
-import Epp from './epp';
+import App from './pages/app';
+import Bpp from './pages/bpp';
+import Cpp from './pages/cpp';
+import Dpp from './pages/dpp';
+import Epp from './pages/epp';
+import Fpp from './pages/fpp';
 
 const routesProps = {data: '我是路由的参数'};
 
@@ -50,6 +51,12 @@ const BasicRouter = () => {
                     }}>
                     Epp
                 </button>
+                <button
+                    onClick={() => {
+                        window.location.href = '#/mainf';
+                    }}>
+                    Fpp
+                </button>
             </div>
 
             <Routes>
@@ -58,6 +65,7 @@ const BasicRouter = () => {
                 <Route path="/mainc" element={<Cpp />} />
                 <Route path="/maind" element={<Dpp />} />
                 <Route path="/maine" element={<Epp />} />
+                <Route path="/mainf" element={<Fpp />} />
                 <Route path="/" element={<Navigate to="/main" />} />
             </Routes>
         </HashRouter>

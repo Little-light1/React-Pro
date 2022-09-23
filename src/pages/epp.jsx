@@ -6,7 +6,7 @@
  *
  */
 import React, {useState} from 'react';
-import GameBox from './pages/game/page';
+import GameBox from './game/page';
 
 const Epp = () => {
     return (
