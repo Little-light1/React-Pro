@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-20 14:06:25
+ * @LastEditTime: 2022-09-23 09:11:01
  * @Description:
  *
  */
@@ -84,30 +84,6 @@ const App = (props) => {
                         关闭modal
                     </button>
                     <hr style={{borderColor: contextValue.theme}} />
-                    <button
-                        onClick={() => {
-                            navigate('/mainb');
-                        }}>
-                        Bpp
-                    </button>
-                    <button
-                        onClick={() => {
-                            navigate('/mainc');
-                        }}>
-                        Cpp
-                    </button>
-                    <button
-                        onClick={() => {
-                            navigate('/maind');
-                        }}>
-                        Dpp
-                    </button>
-                    <button
-                        onClick={() => {
-                            navigate('/maine');
-                        }}>
-                        Epp
-                    </button>
                 </myContext.Provider>
             </div>
 
@@ -116,6 +92,7 @@ const App = (props) => {
                 title={'弹窗'}
                 width={500}
                 height={880}
+                footer={null}
                 onCancel={() => {
                     setVisible(false);
                 }}

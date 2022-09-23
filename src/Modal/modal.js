@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-06-29 10:09:57
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-20 13:38:16
+ * @LastEditTime: 2022-09-20 14:16:30
  * @Description:
  *
  */
@@ -37,23 +37,31 @@ class ModalClass extends Component {
 
     // 创建底部
     createFooter = () => {
-        const {onOk, onCancel} = this.props;
+        const {onOk, onCancel, footer} = this.props;
+
+        if (footer === null) {
+            return null;
+        }
         return (
             <div className="modal-footer">
-                <div className="modal-footer-button">
-                    <span className="modal-footer-button-ok" onClick={onOk}>
-                        确认
-                    </span>
-                    <span className="modal-footer-button-cancel" onClick={onCancel}>
-                        取消
-                    </span>
-                </div>
+                {footer ? (
+                    footer
+                ) : (
+                    <div className="modal-footer-button">
+                        <span className="modal-footer-button-ok" onClick={onOk}>
+                            确认
+                        </span>
+                        <span className="modal-footer-button-cancel" onClick={onCancel}>
+                            取消
+                        </span>
+                    </div>
+                )}
             </div>
         );
     };
 
     render() {
-        const {visible, width = 500, height = 500, closeCb, onClose} = this.props;
+        const {visible, width = 500, height = 500, closeCb, onClose, footer} = this.props;
         return (
             <ModalComponent visible={visible} width={width} height={height} onClose={onClose} closeCb={closeCb}>
                 {this.createHeader()}

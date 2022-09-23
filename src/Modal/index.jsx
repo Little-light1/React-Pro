@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-06-29 09:59:29
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-20 14:05:49
+ * @LastEditTime: 2022-09-20 14:17:50
  * @Description:
  *
  */
@@ -11,7 +11,7 @@ import ReactDOM from 'react-dom';
 import './modalCss.css';
 
 const ModalComponent = (props) => {
-    const {visible, onClose, width, height, closeCb, children} = props;
+    const {visible, width, height, children} = props;
     const [modalVisible, setModalVisible] = useState(visible || false);
 
     const ModalBox = useMemo(() => {

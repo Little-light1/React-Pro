@@ -2,82 +2,81 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:41:23
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-08-31 10:50:11
+ * @LastEditTime: 2022-09-23 09:09:53
  * @Description:
  *
  */
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
-import {Table} from 'antd';
-import data10000 from './mock/data10000.json';
-
-const cell = (props, props1, props2) => {
-    console.log('props: ', props);
-    console.log('props1: ', props1);
-
-    return <td {...props}>{props.children}</td>;
-};
+import BpmnModeler from 'bpmn-js/lib/Modeler';
+import BpmnViewer from 'bpmn-js/lib/Viewer';
+import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css';
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/camunda';
+import camundaModdleDescriptor from 'camunda-bpmn-moddle/resources/camunda';
+import {xmlStr} from './xml';
+import './dpp.css';
 
 const Dpp = (props) => {
     const navigate = useNavigate();
-    const [dataSource, setDataSource] = useState([]);
-    const columns = [
-        {
-            dataIndex: 'deviceId',
-            title: '设备ID',
-            name: '设备ID',
-            align: 'center',
-            width: 120,
-        },
-        {
-            dataIndex: 'deviceName',
-            title: '设备名称',
-            name: '设备名称',
-            align: 'center',
-            width: 150,
-        },
-        {
-            dataIndex: 'deviceModel',
-            title: '型号',
-            name: '型号',
-            align: 'center',
-            width: 150,
-        },
-        {
-            dataIndex: 'farmName',
-            title: '电场名称',
-            name: '电场名称',
-            align: 'center',
-        },
-    ];
+    const bpmnModeler = useRef(null);
+    const canvasRef = useRef(null);
+    const [count, setCount] = useState('false');
 
     useEffect(() => {
-        setTimeout(() => {
-            setDataSource(data10000);
-        }, 3000);
-    }, []);
+        if (canvasRef.current && count === 'false') {
+            bpmnModeler.current = new BpmnModeler({
+                container: canvasRef.current,
+                propertiesPanel: {
+                    parent: '#js-properties-panel',
+                },
+                additionalModules: [
+                    // 右边的属性栏
+                    propertiesProviderModule,
+                    propertiesPanelModule,
+                ],
+                moddleExtensions: {
+                    camunda: camundaModdleDescriptor,
+                },
+            });
+            bpmnModeler.current.importXML(xmlStr, (err) => {
+                if (err) {
+                    // console.error(err)
+                } else {
+                    addEventBusListener();
+                }
+            });
+            setCount('true');
+        }
+    }, [count]);
+
+    const addEventBusListener = () => {
+        // 监听 element
+        const eventBus = bpmnModeler.get('eventBus');
+        const eventTypes = ['element.click', 'element.changed', 'element.updateLabel'];
+        eventTypes.forEach(function (eventType) {
+            eventBus.on(eventType, function (e) {
+                console.log(eventType);
+                if (!e || e.element.type == 'bpmn:Process') return;
+                if (eventType === 'element.changed') {
+                    // that.elementChanged(e)
+                } else if (eventType === 'element.click') {
+                    console.log('点击了element', e);
+                    // if (e.element.type === 'bpmn:Task') {
+                    // }
+                } else if (eventType === 'element.updateLabel') {
+                    console.log('element.updateLabel', e.element);
+                }
+            });
+        });
+    };
+
     return (
         <React.Fragment>
-            <Table components={{body: {cell: cell}}} dataSource={dataSource} columns={columns} scroll={{y: 500}} pagination={null} />
-            <hr />
-            <button
-                onClick={() => {
-                    navigate('/main');
-                }}>
-                App
-            </button>
-            <button
-                onClick={() => {
-                    navigate('/mainb');
-                }}>
-                Bpp
-            </button>
-            <button
-                onClick={() => {
-                    navigate('/mainc');
-                }}>
-                Cpp
-            </button>
+            <div className="containers" style={{width: '100%', height: '98%'}}>
+                <div className="canvas" ref={canvasRef} style={{width: '100%', height: '98%'}}></div>
+                <div id="js-properties-panel" style={{position: 'absolute', right: 0, top: 0, width: '300px', height: '500px'}}></div>
+            </div>
         </React.Fragment>
     );
 };
