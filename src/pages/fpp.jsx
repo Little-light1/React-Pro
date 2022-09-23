@@ -2,26 +2,34 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 14:57:19
+ * @LastEditTime: 2022-09-23 16:42:16
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import LogicFlow from '@logicflow/core';
 import SiderBar from './lfNode/siderBar';
 import NodeInfo from './lfNode/nodeInfo';
+import OperateBar from './lfNode/operateBar';
 import {registerNode} from './lfNode/units';
 import {SelectionSelect, Menu} from '@logicflow/extension';
 import '@logicflow/core/dist/style/index.css';
 import '@logicflow/extension/lib/style/index.css';
+import './lfNode/lfNode.css';
 
+let lfRef;
 const Fpp = () => {
     const refContainer = useRef();
-    const lfRef = useRef();
+    // const lfRef = useRef();
     const [helpLfUpdate, setHelpLFUpdate] = useState(false);
-    const [activeNode, setActiveNode] = useState({});
+    const [activeNode, setActiveNode] = useState(null);
+    // 引入框选插件
+    LogicFlow.use(SelectionSelect);
+    LogicFlow.use(Menu);
+
     useEffect(() => {
-        lfRef.current = new LogicFlow({
+        lfRef = new LogicFlow({
             container: refContainer.current,
+            plugins: [Menu],
             height: 957,
             width: 1830,
             overlapMode: 1,
@@ -40,65 +48,34 @@ const Fpp = () => {
                 backgroundRepeat: 'repeat',
             },
         });
-        // 引入框选插件
-        LogicFlow.use(SelectionSelect);
-        LogicFlow.use(Menu);
-        lfRef.current.render({
-            nodes: [
-                {
-                    id: '1',
-                    type: 'circle',
-                    x: 100,
-                    y: 100,
-                    text: '节点1',
-                },
-                {
-                    id: '2',
-                    type: 'rect',
-                    x: 300,
-                    y: 100,
-                    text: '节点2',
-                },
-                {
-                    id: '3',
-                    type: 'diamond',
-                    x: 400,
-                    y: 100,
-                    text: '节点3',
-                },
-                {
-                    id: '4',
-                    type: 'polygon',
-                    x: 500,
-                    y: 100,
-                    text: '节点4',
-                },
-            ],
+
+        lfRef.render({
+            nodes: [],
             edges: [],
         });
-        registerNode(lfRef.current);
+
+        registerNode(lfRef);
     }, []);
     // 帮助lfRef更新,获取选中节点
     useEffect(() => {
-        lfRef.current.on('selection:selected,node:click', ({data}) => {
+        lfRef.on('selection:selected,node:click,element:click,blank:click', (e) => {
+            const {data} = e;
             setHelpLFUpdate(!helpLfUpdate);
-            if (data) {
-                setActiveNode(data);
-            }
+            setActiveNode(data);
         });
     }, []);
 
     // 移动节点
     const moveNode = (type, name) => {
-        lfRef.current?.dnd.startDrag({type, text: name});
+        lfRef?.dnd.startDrag({type, text: name});
     };
-    // 设置节点
 
     return (
         <div className="lfBox">
+            <OperateBar lf={lfRef} />
             <SiderBar moveNode={moveNode} />
             <div className="App" ref={refContainer}></div>
-            <NodeInfo />
+            {activeNode && <NodeInfo activeNode={activeNode} />}
         </div>
     );
 };

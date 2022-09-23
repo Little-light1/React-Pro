@@ -2,36 +2,44 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 14:42:54
+ * @LastEditTime: 2022-09-23 16:20:40
  *
  */
-import RectRadius from './rectRadius';
-import Rect from './rect';
-import Triangle from './triangle';
 import './lfNode.css';
 
 const SiderBar = ({moveNode}) => {
     return (
         <div className="siderBar">
             <div
+                className="node rect"
                 onMouseDown={() => {
-                    moveNode('pro-rect', '矩形');
-                }}>
-                <Rect />
-            </div>
+                    moveNode('rect', '矩形');
+                }}></div>
 
             <div
+                className="node rectRadius"
                 onMouseDown={() => {
                     moveNode('rect-radius', '平滑矩形');
-                }}>
-                <RectRadius />
-            </div>
+                }}></div>
             <div
                 onMouseDown={() => {
                     moveNode('triangle', '三角');
                 }}>
-                <Triangle />
+                <svg className="node">
+                    <path
+                        d="M 1 0 L 39 20 L 1 39 Z"
+                        fill="#ffffff"
+                        stroke="#000000"
+                        strokeWidth="1"
+                        strokeMiterlimit="10"
+                        pointerEvents="all"></path>
+                </svg>
             </div>
+            <div
+                className="node circle"
+                onMouseDown={() => {
+                    moveNode('circle', '圆');
+                }}></div>
         </div>
     );
 };
