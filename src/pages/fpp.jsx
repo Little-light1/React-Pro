@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 16:42:16
+ * @LastEditTime: 2022-09-23 16:51:39
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
@@ -36,7 +36,7 @@ const Fpp = () => {
             autoWrap: true,
             metaKeyMultipleSelected: true,
             keyboard: {
-                enabled: false,
+                enabled: true,
             },
             grid: {
                 visible: false,

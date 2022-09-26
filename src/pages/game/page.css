@@ -27,10 +27,12 @@
 }
 
 .gameArea {
+    background-image: url("../../assets/back.png");
     position: relative;
     height: 70%;
     border: 2px solid black;
     border-radius: 9px;
+    background-size: cover;
 
 }
 

@@ -2,20 +2,21 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:45:53
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-19 17:01:03
+ * @LastEditTime: 2022-09-26 09:04:52
  *
  */
 import React, {useState, useEffect} from 'react';
 import {itemsArr} from './content';
 import './page.css';
 import {isItemCanClick} from './action';
+// import music from '../../assets/music.mp3';
 
 let hasThreeItem = 0;
 const GameBox = () => {
     // 分数
     const [score, setScore] = useState(0);
     // 第几关
-    const [level, setLevel] = useState(1);
+    const [level, setLevel] = useState(6);
     // 游戏的item
     const [gameItemsArr, setGameItemsArr] = useState(itemsArr(level));
     // 操作的数组
@@ -24,6 +25,16 @@ const GameBox = () => {
     const [nowClickItemInfo, setNowClickItemInfo] = useState([null, null, null]);
     // 操作次数
     const [isOperate, setIsOperate] = useState([0, 0, 0]);
+    // const musicRef = useRef(null);
+
+    useEffect(() => {
+        // if (musicRef.current) {
+        //     musicRef.current.currentTime = 0;
+        //     document.addEventListener('click', (event) => {
+        //         musicRef.current.play();
+        //     });
+        // }
+    }, []);
 
     useEffect(() => {
         if (operateArr.filter((item) => item).length === 7) {
@@ -158,11 +169,11 @@ const GameBox = () => {
             <div className="operateArea">
                 {operateArr.map((item, index) => {
                     if (!item) {
-                        return <div key={index} className="gameItemOperate"></div>;
+                        return <div key={index + '1'} className="gameItemOperate"></div>;
                     } else {
                         return (
                             <div
-                                key={index}
+                                key={index + '2'}
                                 style={isOperate[2] === 1 ? {background: item.color, width: '8%'} : {background: item.color}}
                                 className="gameItemOperate">
                                 {item.name}
@@ -231,6 +242,7 @@ const GameBox = () => {
                     格子+1
                 </span>
             </div>
+            {/* <audio muted ref={musicRef} src={music}></audio> */}
         </div>
     );
 };
