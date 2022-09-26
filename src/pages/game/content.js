@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:46:02
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-19 13:24:51
+ * @LastEditTime: 2022-09-26 10:40:26
  *
  */
 const gameItemsArr = [
@@ -60,7 +60,7 @@ export const itemsArr = (level = 1) => {
     const noItemsArr = [];
     let i = noItemsNum[level - 1];
     while (i > 0) {
-        noItemsArr.push({name: '', color: '', position: [null, null, null], display: false});
+        noItemsArr.push({name: '', color: '', position: [null, null, null]});
         i--;
     }
 

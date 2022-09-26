@@ -2,16 +2,17 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 16:46:57
+ * @LastEditTime: 2022-09-26 09:59:19
  *
  */
 import './lfNode.css';
-import {Button} from 'antd';
+import {Button, Checkbox} from 'antd';
 
 const OperateBar = ({lf}) => {
     return (
         <div className="operateBar">
             <Button
+                disabled={!lf}
                 type="primary"
                 onClick={() => {
                     const data = lf.getGraphData();
@@ -20,6 +21,7 @@ const OperateBar = ({lf}) => {
                 保存
             </Button>
             <Button
+                disabled={!lf}
                 type="primary"
                 onClick={() => {
                     lf.clearData();
@@ -27,6 +29,7 @@ const OperateBar = ({lf}) => {
                 清除
             </Button>
             <Button
+                disabled={!lf}
                 type="primary"
                 onClick={() => {
                     lf.undo();
@@ -34,12 +37,33 @@ const OperateBar = ({lf}) => {
                 上一步
             </Button>
             <Button
+                disabled={!lf}
                 type="primary"
                 onClick={() => {
                     lf.redo();
                 }}>
                 下一步
             </Button>
+            <Button
+                disabled={!lf}
+                type="primary"
+                onClick={() => {
+                    lf.extension.snapshot.getSnapshot();
+                }}>
+                下载
+            </Button>
+            <div style={{color: '#fff'}}>框选:</div>
+            <Checkbox
+                disabled={!lf}
+                onChange={(e) => {
+                    console.log(lf);
+                    if (e.target.checked) {
+                        lf.extension.selectionSelect.openSelectionSelect();
+                    } else {
+                        lf.extension.selectionSelect.closeSelectionSelect();
+                    }
+                }}
+            />
         </div>
     );
 };

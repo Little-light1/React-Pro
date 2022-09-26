@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 16:51:39
+ * @LastEditTime: 2022-09-26 10:17:18
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
@@ -11,25 +11,25 @@ import SiderBar from './lfNode/siderBar';
 import NodeInfo from './lfNode/nodeInfo';
 import OperateBar from './lfNode/operateBar';
 import {registerNode} from './lfNode/units';
-import {SelectionSelect, Menu} from '@logicflow/extension';
+import {SelectionSelect, Menu, Snapshot} from '@logicflow/extension';
 import '@logicflow/core/dist/style/index.css';
 import '@logicflow/extension/lib/style/index.css';
 import './lfNode/lfNode.css';
 
 let lfRef;
+
 const Fpp = () => {
     const refContainer = useRef();
     // const lfRef = useRef();
     const [helpLfUpdate, setHelpLFUpdate] = useState(false);
     const [activeNode, setActiveNode] = useState(null);
-    // 引入框选插件
-    LogicFlow.use(SelectionSelect);
-    LogicFlow.use(Menu);
 
     useEffect(() => {
         lfRef = new LogicFlow({
             container: refContainer.current,
-            plugins: [Menu],
+            stopScrollGraph: true, // 禁止鼠标滚动移动画布
+            // stopMoveGraph: true,// 禁止移动画布
+            plugins: [Menu, Snapshot, SelectionSelect],
             height: 957,
             width: 1830,
             overlapMode: 1,
@@ -53,8 +53,8 @@ const Fpp = () => {
             nodes: [],
             edges: [],
         });
-
         registerNode(lfRef);
+        setHelpLFUpdate(!helpLfUpdate);
     }, []);
     // 帮助lfRef更新,获取选中节点
     useEffect(() => {
@@ -72,7 +72,7 @@ const Fpp = () => {
 
     return (
         <div className="lfBox">
-            <OperateBar lf={lfRef} />
+            {lfRef && <OperateBar lf={lfRef} />}
             <SiderBar moveNode={moveNode} />
             <div className="App" ref={refContainer}></div>
             {activeNode && <NodeInfo activeNode={activeNode} />}

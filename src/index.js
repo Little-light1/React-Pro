@@ -2,23 +2,24 @@
  * @Author: zhangzhen
  * @Date: 2022-06-14 15:53:38
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 08:51:54
+ * @LastEditTime: 2022-09-26 10:33:21
  * @Description:
  *
  */
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import BasicRouter from './mainRouter';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(
     <Provider store={store}>
         <BasicRouter></BasicRouter>
     </Provider>,
-    document.getElementById('root'),
 );
 
 // If you want to start measuring performance in your app, pass a function

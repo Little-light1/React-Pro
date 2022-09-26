@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:45:53
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 09:04:52
+ * @LastEditTime: 2022-09-26 10:44:22
  *
  */
 import React, {useState, useEffect} from 'react';
@@ -133,7 +133,7 @@ const GameBox = () => {
                     return (
                         <div
                             className="gameAreaFloor"
-                            key={item.zIndex}
+                            key={index}
                             style={
                                 item.arr.filter((k) => k.name !== '').length !== 0
                                     ? {zIndex: item.zIndex, width: item.width, height: item.width}
@@ -147,7 +147,7 @@ const GameBox = () => {
 
                                             moveItem(gameItem, gameIndex, index);
                                         }}
-                                        key={gameIndex}
+                                        key={gameItem.position.join('-')}
                                         style={
                                             gameItem.name === ''
                                                 ? {opacity: 0, pointerEvents: 'none'}
@@ -173,7 +173,7 @@ const GameBox = () => {
                     } else {
                         return (
                             <div
-                                key={index + '2'}
+                                key={item.position.join('-')}
                                 style={isOperate[2] === 1 ? {background: item.color, width: '8%'} : {background: item.color}}
                                 className="gameItemOperate">
                                 {item.name}

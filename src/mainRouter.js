@@ -59,6 +59,7 @@ const BasicRouter = () => {
                     Cpp
                 </Button>
                 <Button
+                    disabled
                     type={currentPage === '#/maind' && 'primary'}
                     onClick={() => {
                         setCurrentPage('#/maind');
@@ -88,7 +89,7 @@ const BasicRouter = () => {
                 <Route path="/main" element={<App {...routesProps} />} />
                 <Route path="/mainb" element={<Bpp />} />
                 <Route path="/mainc" element={<Cpp />} />
-                <Route path="/maind" element={<Dpp />} />
+                {/* <Route path="/maind" element={<Dpp />} /> */}
                 <Route path="/maine" element={<Epp />} />
                 <Route path="/mainf" element={<Fpp />} />
                 <Route path="/" element={<Navigate to="/main" />} />
