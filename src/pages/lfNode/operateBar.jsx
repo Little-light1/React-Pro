@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 15:22:22
+ * @LastEditTime: 2022-09-26 15:28:41
  *
  */
 
@@ -20,9 +20,9 @@ const OperateBar = ({lf}) => {
                 type="primary"
                 onClick={() => {
                     lf.updateEditConfig({
-                        adjustEdge: !isEditable,
-                        adjustNodePosition: !isEditable,
-                        hideAnchors: !isEditable,
+                        adjustEdge: isEditable,
+                        adjustNodePosition: isEditable,
+                        hideAnchors: isEditable,
                     });
                     setIsEditable(!isEditable);
                 }}>
