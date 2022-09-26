@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 10:17:18
+ * @LastEditTime: 2022-09-26 15:16:19
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
@@ -20,6 +20,7 @@ let lfRef;
 
 const Fpp = () => {
     const refContainer = useRef();
+    console.log('refContainer: ', refContainer);
     // const lfRef = useRef();
     const [helpLfUpdate, setHelpLFUpdate] = useState(false);
     const [activeNode, setActiveNode] = useState(null);

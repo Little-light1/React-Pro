@@ -2,15 +2,32 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 09:59:19
+ * @LastEditTime: 2022-09-26 15:22:22
  *
  */
+
+import {useState} from 'react';
 import './lfNode.css';
 import {Button, Checkbox} from 'antd';
 
 const OperateBar = ({lf}) => {
+    const [isEditable, setIsEditable] = useState(true);
+
     return (
         <div className="operateBar">
+            <Button
+                disabled={!lf}
+                type="primary"
+                onClick={() => {
+                    lf.updateEditConfig({
+                        adjustEdge: !isEditable,
+                        adjustNodePosition: !isEditable,
+                        hideAnchors: !isEditable,
+                    });
+                    setIsEditable(!isEditable);
+                }}>
+                {isEditable ? '编辑中...' : '编辑'}
+            </Button>
             <Button
                 disabled={!lf}
                 type="primary"
