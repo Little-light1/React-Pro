@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 11:17:18
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 11:22:39
+ * @LastEditTime: 2022-09-27 16:59:45
  *
  */
 import {RectResize} from '@logicflow/extension';
@@ -28,7 +28,7 @@ class RectNewModel extends RectResize.model {
 }
 
 export const RectNode = {
-    type: 'pro-rect',
+    type: 'startEvent',
     view: RectResize.view,
     model: RectNewModel,
 };
@@ -41,7 +41,7 @@ class RectRadiusModel extends RectNode.model {
     }
 }
 export const RectRadius = {
-    type: 'rect-radius',
+    type: 'userTask',
     view: RectNode.view,
     model: RectRadiusModel,
 };

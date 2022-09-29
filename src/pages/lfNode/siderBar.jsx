@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 16:20:40
+ * @LastEditTime: 2022-09-29 10:55:57
  *
  */
 import './lfNode.css';
@@ -11,35 +11,34 @@ const SiderBar = ({moveNode}) => {
     return (
         <div className="siderBar">
             <div
-                className="node rect"
+                className="node"
                 onMouseDown={() => {
-                    moveNode('rect', '矩形');
-                }}></div>
+                    moveNode('startEvent', '开始');
+                }}>
+                开始
+            </div>
 
             <div
-                className="node rectRadius"
+                className="node"
                 onMouseDown={() => {
-                    moveNode('rect-radius', '平滑矩形');
-                }}></div>
-            <div
-                onMouseDown={() => {
-                    moveNode('triangle', '三角');
+                    moveNode('endEvent', '结束');
                 }}>
-                <svg className="node">
-                    <path
-                        d="M 1 0 L 39 20 L 1 39 Z"
-                        fill="#ffffff"
-                        stroke="#000000"
-                        strokeWidth="1"
-                        strokeMiterlimit="10"
-                        pointerEvents="all"></path>
-                </svg>
+                结束
             </div>
             <div
-                className="node circle"
+                className="node"
                 onMouseDown={() => {
-                    moveNode('circle', '圆');
-                }}></div>
+                    moveNode('userTask', '用户任务');
+                }}>
+                用户
+            </div>
+            <div
+                className="node"
+                onMouseDown={() => {
+                    moveNode('exclusiveGateway', '分支');
+                }}>
+                分支
+            </div>
         </div>
     );
 };

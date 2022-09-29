@@ -2,13 +2,16 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 11:19:56
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 13:44:45
+ * @LastEditTime: 2022-09-29 14:30:06
  *
  */
-import {RectNode, RectRadius} from './RectNode';
-import {Triangle} from './TriangleNode';
+import {userTask} from './userTask';
+import {startEvent} from './startEvent';
+import {endEvent} from './endEvent';
+import {exclusiveGateway} from './exclusiveGateway';
+import {sequenceFlow} from './sequenceFlow';
 
 export const registerNode = (lf) => {
     // 注册图形;
-    lf.batchRegister([RectNode, RectRadius, Triangle]);
+    lf.batchRegister([userTask, startEvent, endEvent, exclusiveGateway, sequenceFlow]);
 };

@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 15:16:19
+ * @LastEditTime: 2022-09-29 10:49:26
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
@@ -11,16 +11,16 @@ import SiderBar from './lfNode/siderBar';
 import NodeInfo from './lfNode/nodeInfo';
 import OperateBar from './lfNode/operateBar';
 import {registerNode} from './lfNode/units';
-import {SelectionSelect, Menu, Snapshot} from '@logicflow/extension';
+import {SelectionSelect, Menu, Snapshot, BpmnElement} from '@logicflow/extension';
 import '@logicflow/core/dist/style/index.css';
 import '@logicflow/extension/lib/style/index.css';
 import './lfNode/lfNode.css';
+import {BpmnXmlAdapter} from './lfNode/plugins/index';
 
 let lfRef;
 
 const Fpp = () => {
     const refContainer = useRef();
-    console.log('refContainer: ', refContainer);
     // const lfRef = useRef();
     const [helpLfUpdate, setHelpLFUpdate] = useState(false);
     const [activeNode, setActiveNode] = useState(null);
@@ -30,7 +30,7 @@ const Fpp = () => {
             container: refContainer.current,
             stopScrollGraph: true, // 禁止鼠标滚动移动画布
             // stopMoveGraph: true,// 禁止移动画布
-            plugins: [Menu, Snapshot, SelectionSelect],
+            plugins: [Menu, Snapshot, SelectionSelect, BpmnElement, BpmnXmlAdapter],
             height: 957,
             width: 1830,
             overlapMode: 1,
@@ -54,6 +54,8 @@ const Fpp = () => {
             nodes: [],
             edges: [],
         });
+        console.log('lfRef: ', lfRef);
+
         registerNode(lfRef);
         setHelpLFUpdate(!helpLfUpdate);
     }, []);

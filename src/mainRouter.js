@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 16:49:37
+ * @LastEditTime: 2022-09-27 14:31:40
  * @Description:
  *
  */
@@ -59,7 +59,6 @@ const BasicRouter = () => {
                     Cpp
                 </Button>
                 <Button
-                    disabled
                     type={currentPage === '#/maind' && 'primary'}
                     onClick={() => {
                         setCurrentPage('#/maind');
@@ -89,7 +88,7 @@ const BasicRouter = () => {
                 <Route path="/main" element={<App {...routesProps} />} />
                 <Route path="/mainb" element={<Bpp />} />
                 <Route path="/mainc" element={<Cpp />} />
-                {/* <Route path="/maind" element={<Dpp />} /> */}
+                <Route path="/maind" element={<Dpp />} />
                 <Route path="/maine" element={<Epp />} />
                 <Route path="/mainf" element={<Fpp />} />
                 <Route path="/" element={<Navigate to="/main" />} />
