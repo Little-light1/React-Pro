@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-06-14 15:53:38
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-10-08 10:24:29
+ * @LastEditTime: 2022-10-08 10:25:36
  *
 -->
 
@@ -28,4 +28,4 @@ React 进阶实践学习代码
 #### 安装教程
 
 1.  npm i && yarn
-2.  npm start %% yarn start
+2.  npm start && yarn start
