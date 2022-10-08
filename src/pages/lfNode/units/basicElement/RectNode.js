@@ -6,7 +6,7 @@
  *
  */
 import {RectResize} from '@logicflow/extension';
-import {getShapeStyleFuction, getTextStyleFunction} from './getShapeStyleUtil';
+import {getShapeStyleFuction, getTextStyleFunction} from '../getShapeStyleUtil';
 
 // 矩形
 class RectNewModel extends RectResize.model {

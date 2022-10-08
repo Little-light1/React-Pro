@@ -7,7 +7,7 @@
  */
 import {h} from '@logicflow/core';
 import {RectResize} from '@logicflow/extension';
-import {getShapeStyleFuction, getTextStyleFunction} from './getShapeStyleUtil';
+import {getShapeStyleFuction, getTextStyleFunction} from '../getShapeStyleUtil';
 
 // 三角形
 class TriangleModel extends RectResize.model {

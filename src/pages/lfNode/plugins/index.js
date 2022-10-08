@@ -359,7 +359,7 @@ function getEdgeConfig(edgeValue, processValue) {
     var text;
     var textVal = processValue['-name'];
     if (textVal) {
-        var textBounds = edgeValue['bpmndi:BPMNLabel']['dc:Bounds'];
+        var textBounds = edgeValue['bpmndi:BPMNLabel']['omgdc:Bounds'];
         // 如果边文本换行，则其偏移量应该是最长一行的位置
         var textLength_1 = 0;
         textVal.split('\n').forEach(function (textSpan) {

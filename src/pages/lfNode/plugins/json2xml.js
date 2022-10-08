@@ -1,10 +1,3 @@
-/*
- * @Author: zhangzhen
- * @Date: 2022-09-28 13:49:50
- * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-28 13:52:08
- *
- */
 /**
  * This work is licensed under Creative Commons GNU LGPL License.
  * License:
