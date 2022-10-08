@@ -479,8 +479,6 @@ var BpmnXmlAdapter = {
     },
     adapterXmlIn: function (bpmnData) {
         var json = lfXml2Json(bpmnData);
-        console.log('json: ', json);
-        console.log('node', BpmnAdapter.adapterIn(json));
 
         return BpmnAdapter.adapterIn(json);
     },

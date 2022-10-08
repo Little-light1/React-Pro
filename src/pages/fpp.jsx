@@ -54,7 +54,6 @@ const Fpp = () => {
             nodes: [],
             edges: [],
         });
-        console.log('lfRef: ', lfRef);
 
         registerNode(lfRef);
         setHelpLFUpdate(!helpLfUpdate);

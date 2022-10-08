@@ -20,7 +20,6 @@ const debounce = function (fn, time) {
 };
 
 export const useDebounce = (fun, delayTime) => {
-    console.log('fun: ', fun);
     const funRef = useRef(fun);
 
     const debounceFun = useMemo(() => {

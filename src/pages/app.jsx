@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-23 09:14:26
+ * @LastEditTime: 2022-10-08 13:32:52
  * @Description:
  *
  */
@@ -38,7 +38,6 @@ const App = (props) => {
     const [contextValue, setContextValue] = useState({theme: 'blue'});
     const [number, setNumber] = useState(0);
     const [visible, setVisible] = useState(false);
-    const navigate = useNavigate();
 
     const debounceFun = useDebounce(() => {
         console.log('1111');

@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-29 14:16:42
+ * @LastEditTime: 2022-10-08 13:33:55
  *
  */
 
@@ -102,7 +102,6 @@ const OperateBar = ({lf}) => {
             <Checkbox
                 disabled={!lf}
                 onChange={(e) => {
-                    console.log(lf);
                     if (e.target.checked) {
                         lf.extension.selectionSelect.openSelectionSelect();
                     } else {
