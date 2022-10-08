@@ -310,8 +310,8 @@ function getNodeConfig(shapeValue, type, processValue) {
             value: name,
         };
         // 自定义文本位置
-        if (shapeValue['bpmndi:BPMNLabel'] && shapeValue['bpmndi:BPMNLabel']['dc:Bounds']) {
-            var textBounds = shapeValue['bpmndi:BPMNLabel']['dc:Bounds'];
+        if (shapeValue['bpmndi:BPMNLabel'] && shapeValue['bpmndi:BPMNLabel']['omgdc:Bounds']) {
+            var textBounds = shapeValue['bpmndi:BPMNLabel']['omgdc:Bounds'];
             text.x = Number(textBounds['-x']) + Number(textBounds['-width']) / 2;
             text.y = Number(textBounds['-y']) + Number(textBounds['-height']) / 2;
         }
