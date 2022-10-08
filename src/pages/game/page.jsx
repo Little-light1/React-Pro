@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:45:53
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-26 10:44:22
+ * @LastEditTime: 2022-10-08 10:24:18
  *
  */
 import React, {useState, useEffect} from 'react';
@@ -16,7 +16,7 @@ const GameBox = () => {
     // 分数
     const [score, setScore] = useState(0);
     // 第几关
-    const [level, setLevel] = useState(6);
+    const [level, setLevel] = useState(1);
     // 游戏的item
     const [gameItemsArr, setGameItemsArr] = useState(itemsArr(level));
     // 操作的数组
