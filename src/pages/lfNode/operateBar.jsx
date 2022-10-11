@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-10-08 13:33:55
+ * @LastEditTime: 2022-10-11 10:44:15
  *
  */
 
@@ -44,12 +44,27 @@ const OperateBar = ({lf}) => {
                 disabled={!lf}
                 type="primary"
                 onClick={() => {
-                    lf.updateEditConfig({
-                        adjustEdge: isEditable,
-                        adjustNodePosition: isEditable,
-                        hideAnchors: isEditable,
+                    const {editConfigModel} = lf.graphModel;
+                    setIsEditable((prev) => {
+                        console.log('prev: ', prev);
+                        editConfigModel.updateEditConfig({
+                            // 允许调整边
+                            adjustEdge: !prev,
+                            // 允许调整节点
+                            adjustNodePosition: !prev,
+                            // 隐藏节点所有锚点
+                            hideAnchors: prev,
+                            // 是否为静默模式
+                            isSilentMode: prev,
+                            // 允许节点文本可以编辑
+                            nodeTextEdit: !prev,
+                            // 允许边文本可以编辑
+                            edgeTextEdit: !prev,
+                        });
+                        return !prev;
                     });
-                    setIsEditable(!isEditable);
+
+                    console.log('lf', lf);
                 }}>
                 {isEditable ? '编辑中...' : '编辑'}
             </Button>
