@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-10-08 13:32:52
+ * @LastEditTime: 2022-11-03 19:06:22
  * @Description:
  *
  */
@@ -39,15 +39,15 @@ const App = (props) => {
     const [number, setNumber] = useState(0);
     const [visible, setVisible] = useState(false);
 
-    const debounceFun = useDebounce(() => {
+    const debounceFun = () => {
         console.log('1111');
-    }, 1000);
+    };
 
     return (
         <React.Fragment>
             <div style={{border: `2px solid ${contextValue.theme}`, color: contextValue.theme, padding: '10px'}}>
                 <myContext.Provider value={{contextValue, setContextValue}}>
-                    <FormPage />
+                    <FormPage fun={debounceFun} />
                     <hr style={{borderColor: contextValue.theme}} />
                     <ContextPageFake />
                     <hr style={{borderColor: contextValue.theme}} />

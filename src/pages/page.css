@@ -11,3 +11,19 @@
     width: 100%;
     height: 100%;
 }
+
+/* .scrollH .ant-table-tbody {
+    height: 168px;
+}
+
+.scrollH .ant-table-placeholder {
+    position: absolute;
+    width: 100%;
+    top: 51px;
+    z-index: 5;
+} */
+
+/* .ant-table-placeholder {
+    padding: 0;
+    border-top: none;
+} */

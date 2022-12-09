@@ -2,12 +2,12 @@
  * @Author: zhangzhen
  * @Date: 2022-09-15 10:44:12
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-10-11 14:51:40
+ * @LastEditTime: 2022-11-02 14:31:53
  *
  */
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import LogicFlow from '@logicflow/core';
-// import SiderBar from './lfNode/siderBar';
+import SiderBar from './lfNode/siderBar';
 import NodeInfo from './lfNode/nodeInfo';
 import OperateBar from './lfNode/operateBar';
 import {registerNode} from './lfNode/units';
@@ -15,7 +15,7 @@ import {SelectionSelect, Menu, DndPanel, Snapshot, BpmnElement} from '@logicflow
 import '@logicflow/core/dist/style/index.css';
 import '@logicflow/extension/lib/style/index.css';
 import './lfNode/lfNode.css';
-import {BpmnXmlAdapter} from './lfNode/plugins/index';
+import {BpmnXmlAdapter} from './lfNode/plugins';
 import {iconUrl} from './lfNode/content';
 
 let lfRef;
@@ -77,9 +77,6 @@ const Fpp = () => {
                 label: '用户任务',
                 icon: iconUrl.userTask,
                 className: 'important-node',
-                properties: {
-                    disabled: true,
-                },
             },
 
             {
@@ -94,14 +91,25 @@ const Fpp = () => {
                 icon: iconUrl.endEvent,
             },
         ]);
+        registerNode(lfRef);
 
         lfRef.render({
-            nodes: [],
+            nodes: [
+                {
+                    id: 10,
+                    type: 'startEvent',
+                    x: 76,
+                    y: 178,
+                },
+                {
+                    id: 11,
+                    type: 'endEvent',
+                    x: 567,
+                    y: 176,
+                },
+            ],
             edges: [],
         });
-
-        registerNode(lfRef);
-        setHelpLFUpdate(!helpLfUpdate);
     }, []);
     // 帮助lfRef更新,获取选中节点
     useEffect(() => {
@@ -110,17 +118,17 @@ const Fpp = () => {
             setHelpLFUpdate(!helpLfUpdate);
             setActiveNode(data);
         });
-    }, []);
+    }, [helpLfUpdate]);
 
     // 移动节点
-    // const moveNode = (type, name) => {
-    //     lfRef?.dnd.startDrag({type, text: name});
-    // };
+    const moveNode = (type, name) => {
+        lfRef?.dnd.startDrag({type, text: name});
+    };
 
     return (
         <div className="lfBox">
             {lfRef && <OperateBar lf={lfRef} />}
-            {/* <SiderBar moveNode={moveNode} /> */}
+            <SiderBar moveNode={moveNode} lf={lfRef} />
             <div className="App" ref={refContainer}></div>
             {activeNode && <NodeInfo activeNode={activeNode} />}
         </div>

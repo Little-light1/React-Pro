@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 10:59:33
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-10-11 10:44:15
+ * @LastEditTime: 2022-11-14 17:50:10
  *
  */
 
@@ -32,6 +32,7 @@ const OperateBar = ({lf}) => {
         reader.onload = (event) => {
             if (event.target) {
                 const xml = event.target.result;
+                console.log('xml: ', xml);
                 lf.render(xml);
             }
         };
@@ -106,6 +107,7 @@ const OperateBar = ({lf}) => {
                 type="primary"
                 onClick={() => {
                     const data = lf.getGraphData();
+                    console.log('data: ', data);
                     download('logic-flow.xml', data);
                 }}>
                 下载xml

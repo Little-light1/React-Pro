@@ -2,7 +2,7 @@
  * @Author: zhangzhen
  * @Date: 2022-09-23 11:17:18
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-29 15:19:44
+ * @LastEditTime: 2022-10-27 09:57:46
  *
  */
 import {UserTaskModel, UserTaskView} from '@logicflow/extension';
@@ -23,10 +23,8 @@ class UserTaskModelNew extends UserTaskModel {
     }
 }
 
-class UserTaskViewNew extends UserTaskView {}
-
 export const userTask = {
     type: 'userTask',
-    view: UserTaskViewNew,
+    view: UserTaskView,
     model: UserTaskModelNew,
 };
