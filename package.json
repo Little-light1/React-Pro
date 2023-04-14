@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "./",
   "dependencies": {
+    "@babel/core": "^7.21.4",
     "@logicflow/core": "^1.1.28",
     "@logicflow/extension": "^1.1.28",
     "@testing-library/jest-dom": "^5.16.4",
@@ -41,12 +42,17 @@
     ]
   },
   "devDependencies": {
+    "@babel/generator": "^7.21.4",
+    "@babel/parser": "^7.21.4",
+    "@babel/traverse": "^7.21.4",
+    "@babel/types": "^7.21.4",
     "ahooks": "^3.7.1",
     "antd": "^4.22.8",
     "axios": "^0.26.1",
     "bpmn-js": "6.0.4",
     "bpmn-js-properties-panel": "0.33.0",
     "camunda-bpmn-moddle": "4.3.0",
+    "fr-generator": "^2.8.4",
     "loadsh": "^0.0.4",
     "react-redux": "^8.0.0",
     "react-router-dom": "^6.3.0",

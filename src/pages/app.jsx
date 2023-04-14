@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-11-03 19:06:22
+ * @LastEditTime: 2023-04-04 19:31:50
  * @Description:
  *
  */
@@ -19,6 +19,7 @@ import {useNavigate} from 'react-router-dom';
 import Modal from '../Modal/modal';
 import {useDebounce} from '../hooks/useDebounce';
 import Epp from './epp';
+import axios from 'axios';
 
 const ContextPageFake = HocFun(ContextPage);
 const HOCPageFake = HOC(HOCPage);
@@ -72,6 +73,10 @@ const App = (props) => {
                     <hr style={{borderColor: contextValue.theme}} />
                     <button
                         onClick={() => {
+                            axios.post('http://localhos:3331', {
+                                reg: /^abc$/,
+                            });
+
                             setVisible(true);
                         }}>
                         打开modal

@@ -2,7 +2,7 @@
  * @Author: shimmer
  * @Date: 2022-04-23 08:29:50
  * @LastEditors: zhangzhen
- * @LastEditTime: 2022-09-27 14:31:40
+ * @LastEditTime: 2022-12-16 09:34:02
  * @Description:
  *
  */
@@ -15,6 +15,7 @@ import Dpp from './pages/dpp';
 import Epp from './pages/epp';
 import Fpp from './pages/fpp';
 import {Button} from 'antd';
+import Formly from './pages/formly';
 
 const routesProps = {data: '我是路由的参数'};
 
@@ -25,11 +26,11 @@ const BasicRouter = () => {
             <div
                 style={{
                     zIndex: 3,
-                    width: '360px',
+                    width: '420px',
                     position: 'absolute',
                     padding: 5,
-                    top: 20,
-                    right: 20,
+                    top: 0,
+                    right: 10,
                     display: 'flex',
                     justifyContent: 'space-between',
                     background: 'rgba(0,0,0,0.7)',
@@ -82,6 +83,14 @@ const BasicRouter = () => {
                     }}>
                     Fpp
                 </Button>
+                <Button
+                    type={currentPage === '#/maing' && 'primary'}
+                    onClick={() => {
+                        setCurrentPage('#/maing');
+                        window.location.href = '#/maing';
+                    }}>
+                    Gpp
+                </Button>
             </div>
 
             <Routes>
@@ -91,6 +100,7 @@ const BasicRouter = () => {
                 <Route path="/maind" element={<Dpp />} />
                 <Route path="/maine" element={<Epp />} />
                 <Route path="/mainf" element={<Fpp />} />
+                <Route path="/maing" element={<Formly />} />
                 <Route path="/" element={<Navigate to="/main" />} />
             </Routes>
         </HashRouter>
